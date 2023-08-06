@@ -2,6 +2,11 @@
 
 這是一個使用Axum框架進行開發的練習用網頁後端專案，專案目標是完成一個類似於登記系統的服務。
 
+## 使用方式
+
+1. cargo run：執行服務
+2. cargo watch -q -c -w tests/ -x "test -q quick_dev -- --nocapture"：測試服務
+
 ## 學習目標
 
 - [x] 了解如何使用Axum框架
