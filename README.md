@@ -13,8 +13,8 @@
 - [x] 閱讀第一部分的影片並完成專案建置
 - [ ] 回顧專案並加上專案開發筆記，來紀錄自己不了解的地方跟學習到的地方
   - [x] main.rs
-  - [ ] model.rs
-  - [ ] log.rs
+  - [x] model.rs
+  - [x] log.rs
   - [ ] error.rs
   - [ ] ctx.rs
   - [ ] web/mod.rs

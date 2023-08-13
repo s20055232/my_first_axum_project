@@ -7,6 +7,7 @@ use serde_json::{json, Value};
 use serde_with::skip_serializing_none;
 use uuid::Uuid;
 
+// 這邊的log會在每個response回傳之前呼叫，將錯誤類型、錯誤資料記錄下來
 pub async fn log_request(
     uuid: Uuid,
     req_method: Method,
@@ -22,10 +23,12 @@ pub async fn log_request(
 
     let error_type = service_error.map(|se| se.as_ref().to_string());
 
+    // 將我們序列化後 data 對應到的數值取出
     let error_data = serde_json::to_value(service_error)
         .ok()
         .and_then(|mut v| v.get_mut("data").map(|v| v.take()));
 
+    // 一個log資訊紀錄的模板，方便後續人員追蹤錯誤，在使用日誌工具上也會更容易定位到錯誤
     let log_line = RequestLogLine {
         uuid: uuid.to_string(),
         timestamp: timestamp.to_string(),
@@ -41,9 +44,9 @@ pub async fn log_request(
         error_data,
     };
     println!("    ->> log_request: \n{}", json!(log_line));
-    // TODO - Send to cloud-watch
+    // 在實際案例上，我們可以將log傳送到相關服務或工具來紀錄跟呈現
+    // TODO: Send to cloud-watch
     Ok(())
-    // todo!()
 }
 
 // Option::None 不會被序列化
