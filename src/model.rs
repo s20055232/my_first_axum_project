@@ -20,6 +20,8 @@ pub struct TicketForCreate {
 }
 
 // 一般來說是使用資料庫存取，這邊為了簡單，使用物件（記憶體）當作資料庫使用
+// 這個物件被作為Application Level State，這種State會被所有users＆sessions共享，通常是一些昂貴且使用頻繁的操作，像是資料庫連接、設定檔
+// 會在app運行時創建，由於全局共享，通常是唯獨的，避免有人誤改導致全部人受影響
 #[derive(Clone)]
 pub struct ModelController {
     tickets_store: Arc<Mutex<Vec<Option<Ticket>>>>,
@@ -36,9 +38,11 @@ impl ModelController {
 }
 
 // CRUD Implementation
+// 將對資料的CRUD操作都定義在資料層，可以讓外部獲取資料的API統一，而內部運作的邏輯可以隨時更改，只要確保回傳數值一致就好
 impl ModelController {
     pub async fn create_ticket(&self, ctx: Ctx, ticket_fc: TicketForCreate) -> Result<Ticket> {
         let mut store = self.tickets_store.lock().unwrap();
+        // 隨著數量成長
         let id = store.len() as u64;
         let ticket = Ticket {
             id,
