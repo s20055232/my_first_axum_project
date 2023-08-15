@@ -16,7 +16,7 @@
   - [x] model.rs
   - [x] log.rs
   - [x] error.rs
-  - [ ] ctx.rs
+  - [x] ctx.rs
   - [ ] web/mod.rs
   - [ ] web/mw_auth.rs
   - [ ] web/routes_login.rs
