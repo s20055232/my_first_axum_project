@@ -11,17 +11,16 @@
 
 - [x] 了解如何使用Axum框架
 - [x] 閱讀第一部分的影片並完成專案建置
-- [ ] 回顧專案並加上專案開發筆記，來紀錄自己不了解的地方跟學習到的地方
+- [x] 回顧專案並加上專案開發筆記，來紀錄自己不了解的地方跟學習到的地方
   - [x] main.rs
   - [x] model.rs
   - [x] log.rs
   - [x] error.rs
   - [x] ctx.rs
-  - [ ] web/mod.rs
-  - [ ] web/mw_auth.rs
-  - [ ] web/routes_login.rs
-  - [ ] web/routes_tickets.rs
-  - [ ] 最後總結
+  - [x] web/mod.rs
+  - [x] web/mw_auth.rs
+  - [x] web/routes_login.rs
+  - [x] web/routes_tickets.rs
 - [ ] 閱讀第二部分的影片並完善專案（目前作者尚未發布）
 
 ## 參考來源

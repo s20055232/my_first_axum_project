@@ -14,6 +14,8 @@ use crate::Result;
 // struct AppState {
 //     mc: ModelController,
 // }
+
+// mc作為其他API的上下文。這邊主要處理ticket相關的邏輯
 pub fn routes(mc: ModelController) -> Router {
     // let app_state = AppState { mc };
     Router::new()
@@ -23,6 +25,7 @@ pub fn routes(mc: ModelController) -> Router {
 }
 
 // state 是 application level 的，他的 scope 更廣，可以讓所有 handler 共用
+// 這邊主要處理邏輯層的部分，並依據需求調用資料層的部分
 // --- REST Handlers
 async fn create_ticket(
     State(mc): State<ModelController>,
